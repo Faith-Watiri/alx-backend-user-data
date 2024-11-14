@@ -3,6 +3,10 @@
 """
 from flask import jsonify, abort
 from api.v1.views import app_views
+from flask import Blueprint, abort
+
+app_views = Blueprint('app_views', __name__)
+
 
 
 @app_views.route('/status', methods=['GET'], strict_slashes=False)
@@ -33,6 +37,10 @@ def unauthorized() -> str:
       - Aborts
     """
     abort(401)
+
+@app_views.route('/api/v1/unauthorized', methods=['GET'])
+def unauthorized_route():
+    abort(401)  # This will trigger the 401 error handler
 
 
 @app_views.route('/forbidden', methods=['GET'], strict_slashes=False)
