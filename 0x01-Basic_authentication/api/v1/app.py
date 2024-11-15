@@ -20,12 +20,6 @@ if os.getenv("AUTH_TYPE") == "basic_auth":
 elif os.getenv("AUTH_TYPE") == "auth":
     auth = Auth()
 
-@app.errorhandler(401)
-def unauthorized_error(error):
-    response = jsonify({"error": "Unauthorized"})
-    response.status_code = 401
-    return response
-
 
 @app.errorhandler(404)
 def not_found(error) -> str:
@@ -40,6 +34,7 @@ def unauthorized(error) -> str:
     Unauthorized handler.
     """
     return jsonify({"error": "Unauthorized"}), 401
+
 
 @app.errorhandler(403)
 def forbidden(error) -> str:
