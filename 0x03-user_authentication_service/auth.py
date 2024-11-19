@@ -2,6 +2,7 @@
 """ Auth class
 """
 
+import uuid
 from db import DB
 from typing import TypeVar
 from user import User
